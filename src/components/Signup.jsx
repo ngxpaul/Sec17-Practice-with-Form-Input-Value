@@ -4,8 +4,9 @@ export default function Signup() {
     const fd = new FormData(event.target);
     const acquisitionChannels = fd.getAll("acquisition");
     const data = Object.fromEntries(fd.entries());
-    data.aquisition=acquisitionChannels;
+    data.aquisition = acquisitionChannels;
     console.log(data);
+    event.target.reset();
   }
 
   return (
@@ -98,7 +99,7 @@ export default function Signup() {
         <button type="reset" className="button button-flat">
           Reset
         </button>
-        <button type="submit" className="button" >
+        <button type="submit" className="button">
           Sign up
         </button>
       </p>
