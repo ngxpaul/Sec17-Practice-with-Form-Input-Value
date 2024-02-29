@@ -3,34 +3,34 @@ import React, { useState } from "react";
 export default function Login() {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredValue,setEnteredValue] = useState({
-    email:"",
-    password:""
-  })
-//   function handleInputChange(identifier,event){
-// setEnteredValue(prevValue=>(
-//   {
-//     ...prevValue,
-//     [identifier]:event.target.value 
-//   }
-// ))
-//   }
+  const [enteredValue, setEnteredValue] = useState({
+    email: "",
+    password: "",
+  });
+  //   function handleInputChange(identifier,event){
+  // setEnteredValue(prevValue=>(
+  //   {
+  //     ...prevValue,
+  //     [identifier]:event.target.value
+  //   }
+  // ))
+  //   }
 
-//=======================================Alternative way to handle multiple input fields=======================
-function handleInputChange(identifier,value){
-  setEnteredValue(prevValue=>(
-    {
+  //=======================================Alternative way to handle multiple input fields=======================
+  function handleInputChange(identifier, value) {
+    setEnteredValue((prevValue) => ({
       ...prevValue,
-      [identifier]:value 
-    }
-  ))
-    }
+      [identifier]: value,
+    }));
+  }
 
   function handelSubmit(event) {
     event.preventDefault();
     console.log("User entered value: ", enteredValue);
-    console.log("User email: ", enteredValue.email);
-    console.log("User password: ", enteredValue.password);
+    setEnteredValue({
+      email: "",
+      password: "",
+    });
   }
   // function handleEmailChange(event) {
   //   setEnteredValue(event.target.value);
@@ -49,7 +49,7 @@ function handleInputChange(identifier,value){
             id="email"
             type="email"
             name="email"
-            onChange={(event) => handleInputChange("email",event.target.value)}
+            onChange={(event) => handleInputChange("email", event.target.value)}
             value={enteredValue.email}
           />
         </div>
@@ -60,9 +60,11 @@ function handleInputChange(identifier,value){
             id="password"
             type="password"
             name="password"
-            onChange={(event) => handleInputChange("password",event.target.value)}
+            onChange={(event) =>
+              handleInputChange("password", event.target.value)
+            }
             value={enteredValue.password}
-/>
+          />
         </div>
       </div>
 
