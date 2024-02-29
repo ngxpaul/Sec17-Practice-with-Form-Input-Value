@@ -6,6 +6,7 @@ export default function Signup() {
     const data = Object.fromEntries(fd.entries());
     data.aquisition = acquisitionChannels;
     console.log(data);
+    //Better to use use reset() method to clear the form rather than setting the value to empty string
     event.target.reset();
   }
 
