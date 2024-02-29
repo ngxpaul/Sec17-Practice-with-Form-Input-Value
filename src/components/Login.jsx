@@ -1,43 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 export default function Login() {
-  // const [enteredEmail, setEnteredEmail] = useState("");
-  // const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredValue,setEnteredValue] = useState({
-    email:"",
-    password:""
-  })
-//   function handleInputChange(identifier,event){
-// setEnteredValue(prevValue=>(
-//   {
-//     ...prevValue,
-//     [identifier]:event.target.value 
-//   }
-// ))
-//   }
-
-//=======================================Alternative way to handle multiple input fields=======================
-function handleInputChange(identifier,value){
-  setEnteredValue(prevValue=>(
-    {
-      ...prevValue,
-      [identifier]:value 
-    }
-  ))
-    }
-
+  const email = useRef();
+  const password = useRef();
   function handelSubmit(event) {
     event.preventDefault();
-    console.log("User entered value: ", enteredValue);
-    console.log("User email: ", enteredValue.email);
-    console.log("User password: ", enteredValue.password);
+    const enteredEmail = email.current.value;
+    const enteredPassword = password.current.value;
+    console.log("User email: ", enteredEmail);
+    console.log("User password: ", enteredPassword);
   }
-  // function handleEmailChange(event) {
-  //   setEnteredValue(event.target.value);
-  // }
-  // function handlePasswordChange(event) {
-  //   setEnteredPassword(event.target.value);
-  // }
   return (
     <form onSubmit={handelSubmit}>
       <h2>Login</h2>
@@ -45,24 +17,12 @@ function handleInputChange(identifier,value){
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            onChange={(event) => handleInputChange("email",event.target.value)}
-            value={enteredValue.email}
-          />
+          <input id="email" type="email" name="email" ref={email}/>
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            onChange={(event) => handleInputChange("password",event.target.value)}
-            value={enteredValue.password}
-/>
+         <input id="password" type="password" name="password" ref={password}/>
         </div>
       </div>
 
