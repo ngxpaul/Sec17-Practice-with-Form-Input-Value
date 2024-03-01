@@ -10,7 +10,6 @@ function App() {
       <main>
         {/* <Signup /> */}
         <Login />
-        {/* <Input label="Email" id="email" error="Please enter a valid email" /> */}
       </main>
     </>
   );
